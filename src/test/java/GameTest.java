@@ -1,12 +1,18 @@
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class GameTest {
+    Game currentGame;
+
+    @BeforeEach
+    void setUp() {
+        currentGame = new Game();
+    }
+
     @Test
     void scoreCalculatesASpare() {
-        Game currentGame = new Game();
-
         //First Frame
         currentGame.roll(4);
         currentGame.roll(6);
@@ -19,8 +25,6 @@ public class GameTest {
 
     @Test
     void scoreCalculatesAStrike() {
-        Game currentGame = new Game();
-
         currentGame.roll(10);
 
         //Second Frame
@@ -32,8 +36,6 @@ public class GameTest {
 
     @Test
     void scoreCalculatesASingleFrame() {
-        Game currentGame = new Game();
-
         //First Frame
         currentGame.roll(4);
         currentGame.roll(4);
@@ -47,9 +49,7 @@ public class GameTest {
 
     @Test
     void scoreCalculatesOnlyTheFirstTenFrames() {
-        Game currentGame = new Game();
-
-        for(int i = 0; i < 22; i++) {
+        for (int i = 0; i < 22; i++) {
             currentGame.roll(1);
         }
 
@@ -58,9 +58,7 @@ public class GameTest {
 
     @Test
     void scoreCalculatesExtraFrameIfTenthFrameIsASpare() {
-        Game currentGame = new Game();
-
-        for(int i = 0; i < 19; i++) {
+        for (int i = 0; i < 19; i++) {
             currentGame.roll(1);
         }
 
@@ -73,9 +71,7 @@ public class GameTest {
 
     @Test
     void scoreCalculatesTwoExtraFramesIfTenthFrameIsAStrike() {
-        Game currentGame = new Game();
-
-        for(int i = 0; i < 18; i++) {
+        for (int i = 0; i < 18; i++) {
             currentGame.roll(1);
         }
 

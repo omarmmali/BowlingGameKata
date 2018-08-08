@@ -1,12 +1,18 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class FrameTest {
+    Frame currentFrame;
+
+    @BeforeEach
+    void setUp() {
+        currentFrame = new Frame();
+    }
+
     @Test
     void isSpareReturnsTrueIfSpare() {
-        Frame currentFrame = new Frame();
-
         currentFrame.add(2);
         currentFrame.add(8);
 
@@ -15,8 +21,6 @@ public class FrameTest {
 
     @Test
     void isSpareReturnsFalseIfNotSpare() {
-        Frame currentFrame = new Frame();
-
         currentFrame.add(2);
         currentFrame.add(4);
 
@@ -25,8 +29,6 @@ public class FrameTest {
 
     @Test
     void isStrikeReturnsTrueIfStrike() {
-        Frame currentFrame = new Frame();
-
         currentFrame.add(10);
 
         assertTrue(currentFrame.isStrike());
@@ -34,8 +36,6 @@ public class FrameTest {
 
     @Test
     void isStrikeReturnsFalseIfNotStrike() {
-        Frame currentFrame = new Frame();
-
         currentFrame.add(3);
 
         assertFalse(currentFrame.isStrike());
@@ -43,8 +43,6 @@ public class FrameTest {
 
     @Test
     void getPinsReturnsNumberOfPinsCorrectly() {
-        Frame currentFrame = new Frame();
-
         currentFrame.add(2);
         currentFrame.add(3);
 
@@ -53,8 +51,6 @@ public class FrameTest {
 
     @Test
     void getFirstThrowReturnsCorrectly() {
-        Frame currentFrame = new Frame();
-
         currentFrame.add(2);
 
         assertEquals(2, currentFrame.getFirstThrow());
@@ -62,8 +58,6 @@ public class FrameTest {
 
     @Test
     void getSecondThrowReturnsCorrectly() {
-        Frame currentFrame = new Frame();
-
         currentFrame.add(2);
         currentFrame.add(3);
 
@@ -72,8 +66,6 @@ public class FrameTest {
 
     @Test
     void getPinsWithASingleThrowWorksCorrectly() {
-        Frame currentFrame = new Frame();
-
         currentFrame.add(2);
 
         assertEquals(2, currentFrame.getPins());
